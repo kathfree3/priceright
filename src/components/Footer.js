@@ -15,4 +15,6 @@ const F = styled.div`
   right:0;
   text-align: center;
   margin-bottom: 1rem;
+  background: rgb(184, 207, 226)!important;
+  color: rgb(46, 51, 117)!important;;
 `

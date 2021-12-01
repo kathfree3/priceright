@@ -18,7 +18,7 @@ const CitySelector = ({ selectedCity }) => {
   }
 
   return (
-    <Form>
+    <Form className='cityPicker'>
       {['radio'].map((type) => (
         <div key={`inline-${type}`} className="mb-3">
           {Object.entries(cityOptions).map(item => (
@@ -36,14 +36,3 @@ const CitySelector = ({ selectedCity }) => {
   )
 }
 export default CitySelector
-
-/*<Dropdown>
-      <Dropdown.Toggle>{formCity}</Dropdown.Toggle>
-      <Dropdown.Menu>
-       {Object.entries(cityOptions).map(item => (
-         <Dropdown.Item key={item[1]} onClick={() => update(item[0])}>
-         {item[0]}
-        </Dropdown.Item>
-       ))} 
-      </Dropdown.Menu>
-    </Dropdown>*/

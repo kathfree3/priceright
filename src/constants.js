@@ -6,6 +6,7 @@ export const cityOptions = {
   'Miami': 'miami', 
   'San Diego': 'san diego', 
   'Phoenix' : 'phoenix',
+  'New York' : 'nyc'
 }
 
 export const a = 'hi'

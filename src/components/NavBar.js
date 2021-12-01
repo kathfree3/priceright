@@ -3,27 +3,24 @@ import React from 'react'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 
+import logo from "./logo.png"
+
 const NavBar = () => {
   
   return (
-    <Navbar bg="dark" variant="dark" style={{ padding: '1rem' }}>
+    <Navbar bg="light" className="navybar" style={{ padding: '1rem' }}>
       <Navbar.Brand>
       <img
           alt=""
-          src="../style/logo.png"
-          width="30"
-          height="30"
-          className="d-inline-block align-top"
-        />{' '}
-        Price Right
+          src={logo}
+          height="65"
+          width="auto"
+      />
       </Navbar.Brand>
       <Nav className="me-auto">
         <Nav.Link href="/about">Our Mission</Nav.Link>
         <Nav.Link href="/">Home</Nav.Link>
       </Nav>
-      <Navbar.Collapse className="justify-content-end">
-        <Navbar.Text>Beep</Navbar.Text>
-      </Navbar.Collapse>
     </Navbar>
   )
 }
