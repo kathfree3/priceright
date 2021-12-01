@@ -15,26 +15,34 @@ const FormMaker = ({city, attributes }) => {
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
-    console.log(form)
     const v = form.checkValidity()
     console.log(v)
-    console.log(form)
-    if (form.checkValidity() === false) {
+    if (!v) {
       event.preventDefault();
       event.stopPropagation();
+    }
+    
+    if (v) {
+      event.preventDefault();
+      const sendData = []
+      attributes.forEach(({field}) => {
+        const value = event.target.elements[field].value
+        sendData.push({field, value})
+      })
+      console.log(sendData)
     }
 
     setValidated(true);
   };
 
 
-  const formType = type => {
+  const formType = (type, field) => {
     if (type === BOOLEAN) {
-      return <FormBoolean />
+      return <FormBoolean name={field} />
     } else if (type === INPUT) {
-      return <FormInput />
+      return <FormInput name={field} />
     } else if (type === NUMBER) {
-      return <FormInputNumber /> 
+      return <FormInputNumber name={field} /> 
     }
   }
 
@@ -43,7 +51,7 @@ const FormMaker = ({city, attributes }) => {
       <Form.Group as={Row} className="justify-content-md-center mb-3">
         <Form.Label column sm={2}> {formValue} </Form.Label>
         <Col sm={7}>
-          {formType(type)}
+          {formType(type, field)}
         </Col>
       </Form.Group>
     ))
