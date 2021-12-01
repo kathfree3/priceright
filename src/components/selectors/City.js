@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Dropdown from 'react-bootstrap/Dropdown'
+import Form from 'react-bootstrap/Form'
 
 import { cityOptions } from '../../constants'
 
@@ -18,7 +18,26 @@ const CitySelector = ({ selectedCity }) => {
   }
 
   return (
-    <Dropdown>
+    <Form>
+      {['radio'].map((type) => (
+        <div key={`inline-${type}`} className="mb-3">
+          {Object.entries(cityOptions).map(item => (
+            <Form.Check
+              inline
+              label={item[0]}
+              name="group1"
+              type={type}
+              id={`inline-${type}-1`}
+            />
+            ))}  
+      </div>
+       ))}
+    </Form>
+  )
+}
+export default CitySelector
+
+/*<Dropdown>
       <Dropdown.Toggle>{formCity}</Dropdown.Toggle>
       <Dropdown.Menu>
        {Object.entries(cityOptions).map(item => (
@@ -27,7 +46,4 @@ const CitySelector = ({ selectedCity }) => {
         </Dropdown.Item>
        ))} 
       </Dropdown.Menu>
-    </Dropdown>
-  )
-}
-export default CitySelector
+    </Dropdown>*/
