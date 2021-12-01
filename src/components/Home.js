@@ -1,22 +1,12 @@
 import React, { useState } from 'react'
-import Form from 'react-bootstrap/Form'
-import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
-import Button from 'react-bootstrap/Button'
 
+// local imports
 import CitySelector from './selectors/City'
+import FormMaker from './FormMaker'
 
 const Home = () => {
-  const [city, selectedCity] = useState('')
-
-  /*
-  borough
-  neighborhood
-  address
-  zipcode
-  year built 
-  square feet
-  */
+  const [city, setCity] = useState('')
+  const [attributes, setAttributes] = useState([])
 
   return (
     <div className="homePage">     
@@ -25,48 +15,9 @@ const Home = () => {
     </div>
       <div className='houseInfoForm'>
         <h3> Please Select a City: </h3>
-        <CitySelector selectedCity={selectedCity}/>
-        <Form>
-          <Form.Group as={Row} className="justify-content-md-center mb-3">
-            <Form.Label column sm={2}> Borough </Form.Label>
-            <Col sm={7}>
-              <Form.Control />
-            </Col>
-          </Form.Group>
-          <Form.Group as={Row} className="justify-content-md-center mb-3" >
-            <Form.Label column sm={2}> Neighborhood </Form.Label>
-            <Col sm={7}>
-              <Form.Control />
-            </Col>
-          </Form.Group>
-          <Form.Group as={Row} className="justify-content-md-center mb-3" >
-            <Form.Label column sm={2}> Address </Form.Label>
-            <Col sm={7}>
-              <Form.Control />
-            </Col>
-          </Form.Group>
-          <Form.Group as={Row} className="justify-content-md-center mb-3" >
-            <Form.Label column sm={2}> Zipcode </Form.Label>
-            <Col sm={7}>
-              <Form.Control />
-            </Col>
-          </Form.Group>
-          <Form.Group as={Row} className="justify-content-md-center mb-3" >
-            <Form.Label column sm={2}> Year Built </Form.Label>
-            <Col sm={7}>
-              <Form.Control />
-            </Col>
-          </Form.Group>
-          <Form.Group as={Row} className="justify-content-md-center mb-3" >
-            <Form.Label column sm={2}> Square Feet </Form.Label>
-            <Col sm={7}>
-              <Form.Control />
-            </Col>
-          </Form.Group>
-        </Form>
-        <h3> <Button> Get Predictions </Button> </h3>
+        <CitySelector setCity={setCity} setAttributes={setAttributes} />
+        {city && (<FormMaker city={city} attributes={attributes} /> )}
       </div>
-      
     </div>
   )
 }
