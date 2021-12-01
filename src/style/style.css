@@ -1,0 +1,16 @@
+html, body { 
+  height: 100% 
+}
+
+h1 {
+  text-align: center;
+}
+
+.houseInfoForm {
+  width: 75%; 
+}
+
+.homePage {
+  display: flex;
+  flex-direction: column;
+}
