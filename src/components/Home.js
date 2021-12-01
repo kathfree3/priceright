@@ -21,57 +21,48 @@ const Home = () => {
   return (
     <div className="homePage"> 
       <h1> Enter House Information Below: </h1>
-      <form>
-        <CitySelector selectedCity={selectedCity}/>
-      </form>
-
+      <CitySelector selectedCity={selectedCity}/>
       <div className='houseInfoForm'>
-      <Form>
-        <Form.Group as={Row} className="mb-3">
-          <Form.Label column sm={2}> Borough </Form.Label>
-          <Col sm={10}>
-            <Form.Control />
-          </Col>
-         </Form.Group>
-         <Form.Group as={Row} className="mb-3" >
-          <Form.Label column sm={2}> Neighborhood </Form.Label>
-          <Col sm={10}>
-            <Form.Control />
-          </Col>
-        </Form.Group>
-        <Form.Group as={Row} className="mb-3" >
-          <Form.Label column sm={2}> Address </Form.Label>
-          <Col sm={10}>
-            <Form.Control />
-          </Col>
-        </Form.Group>
-        <Form.Group as={Row} className="mb-3" >
-          <Form.Label column sm={2}> Zipcode </Form.Label>
-          <Col sm={10}>
-            <Form.Control />
-          </Col>
-        </Form.Group>
-        <Form.Group as={Row} className="mb-3" >
-          <Form.Label column sm={2}> Year Built </Form.Label>
-          <Col sm={10}>
-            <Form.Control />
-          </Col>
-        </Form.Group>
-        <Form.Group as={Row} className="mb-3" >
-          <Form.Label column sm={2}> Square Feet </Form.Label>
-          <Col sm={10}>
-            <Form.Control />
-          </Col>
-        </Form.Group>
-
-        
-  <Form.Group as={Row} className="mb-3">
-    <Col sm={{ span: 10, offset: 2 }}>
-      <Button type="button">Get Prediction</Button>
-    </Col>
-  </Form.Group>
-</Form>
-</div>
+        <Form>
+          <Form.Group as={Row} className="justify-content-md-center mb-3">
+            <Form.Label column sm={2}> Borough </Form.Label>
+            <Col sm={7}>
+              <Form.Control />
+            </Col>
+          </Form.Group>
+          <Form.Group as={Row} className="justify-content-md-center mb-3" >
+            <Form.Label column sm={2}> Neighborhood </Form.Label>
+            <Col sm={7}>
+              <Form.Control />
+            </Col>
+          </Form.Group>
+          <Form.Group as={Row} className="justify-content-md-center mb-3" >
+            <Form.Label column sm={2}> Address </Form.Label>
+            <Col sm={7}>
+              <Form.Control />
+            </Col>
+          </Form.Group>
+          <Form.Group as={Row} className="justify-content-md-center mb-3" >
+            <Form.Label column sm={2}> Zipcode </Form.Label>
+            <Col sm={7}>
+              <Form.Control />
+            </Col>
+          </Form.Group>
+          <Form.Group as={Row} className="justify-content-md-center mb-3" >
+            <Form.Label column sm={2}> Year Built </Form.Label>
+            <Col sm={7}>
+              <Form.Control />
+            </Col>
+          </Form.Group>
+          <Form.Group as={Row} className="justify-content-md-center mb-3" >
+            <Form.Label column sm={2}> Square Feet </Form.Label>
+            <Col sm={7}>
+              <Form.Control />
+            </Col>
+          </Form.Group>
+        </Form>
+      </div>
+      <Button> Get Predictions </Button>
     </div>
   )
 }
