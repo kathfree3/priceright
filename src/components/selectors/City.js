@@ -3,38 +3,33 @@ import Form from 'react-bootstrap/Form'
 
 import { cityOptions } from '../../constants'
 
-const CitySelector = ({ selectedCity }) => {
-  const [formCity, selectedFormCity] = useState('Select a city')
+const CitySelector = ({ setCity, setAttributes }) => {
   
-  const makeOptions = () => {
-    for (const key in cityOptions) {
-      console.log(`${key}: ${cityOptions[key]}`);
-    }
-  }
-  
-  const update = (c) => {
-    selectedCity(cityOptions[c])
-    selectedFormCity(c)
+  const change = (c, a) => {
+    setCity(c)
+    setAttributes(a)
   }
 
   return (
-    <Form>
-      {['radio'].map((type) => (
-        <div key={`inline-${type}`} className="mb-3">
-          {Object.entries(cityOptions).map(item => (
+    <Form className='cityPicker'>
+        <div key={`inline-radio`} className="mb-3">
+          {cityOptions.map(({city, formValue, attributes}) => (
             <Form.Check
               inline
-              label={item[0]}
+              label={formValue}
               name="group1"
-              type={type}
-              id={`inline-${type}-1`}
+              type='radio'
+              id={`inline-radio-1`}
+              key={city}
+              onClick={() => change(city, attributes)}
             />
-            ))}  
+          ))}  
       </div>
-       ))}
     </Form>
+   
   )
 }
+
 export default CitySelector
 
 /*<Dropdown>
