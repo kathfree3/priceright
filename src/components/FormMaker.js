@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
+const axios = require('axios').default;
 
 import { cityOptions, TYPES } from '../constants'
 
@@ -23,7 +24,7 @@ const FormMaker = ({city, attributes }) => {
       event.preventDefault();
       event.stopPropagation();
     }
-    
+
     if (v) {
       event.preventDefault();
       const sendData = []
@@ -31,11 +32,25 @@ const FormMaker = ({city, attributes }) => {
         const value = event.target.elements[field].value
         sendData.push({field, value})
       })
-      console.log(sendData)
+      let req_body = {}
+      for (let i = 0; i < sendData.length; i++) {
+        let elt = sendData[i]
+        req_body[elt.field] = elt.value
+      }
+
+      axios.post('http://localhost:5000/predict', req_body, {headers: {"Access-Control-Allow-Origin": "*"}})
+      .then(function (response) {
+        let pred = response.data.prediction
+        alert(pred)
+        console.log(pred)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     }
 
     setValidated(true);
-   
+
   };
 
 
@@ -45,7 +60,7 @@ const FormMaker = ({city, attributes }) => {
     } else if (type === INPUT) {
       return <FormInput name={field} />
     } else if (type === NUMBER) {
-      return <FormInputNumber name={field} /> 
+      return <FormInputNumber name={field} />
     }
   }
 
@@ -54,7 +69,7 @@ const FormMaker = ({city, attributes }) => {
       <Form.Group as={Row} className="justify-content-md-center mb-3">
         <Form.Label column sm={2}> {formValue} </Form.Label>
         <Col sm={7}>
-          {formType(type, field)}
+        <FormInputNumber name={field} />
         </Col>
       </Form.Group>
     ))
@@ -64,11 +79,8 @@ const FormMaker = ({city, attributes }) => {
   return (
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
         {makeInputs()}
-        <form action="/results">
-          <h3> <Button type="submit"> Get Predictions </Button> </h3> 
-        </form>
+        <Button type="submit"> Get Predictions </Button>
       </Form>
   )
 }
 export default FormMaker
-
