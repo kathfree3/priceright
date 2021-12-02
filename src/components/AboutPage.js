@@ -1,8 +1,13 @@
 import React from 'react'
  
 const AboutPage = () => (
-  <div> 
-    <h1> about page</h1>
+  <div className="homePage">     
+    <div className="homepagetitle"> 
+      <h1> About us </h1>
+    </div>
+    <div className='houseInfoForm'>
+      <p> We are price right!</p>
+    </div>
   </div>
 )
 export default AboutPage

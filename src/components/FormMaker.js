@@ -4,6 +4,8 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
 const axios = require('axios').default;
+import { Redirect } from 'react-router'
+import { useNavigate } from 'react-router-dom'
 
 import { cityOptions, TYPES } from '../constants'
 
@@ -13,6 +15,7 @@ const { BOOLEAN, INPUT, NUMBER } = TYPES
 
 const FormMaker = ({city, attributes }) => {
   const [validated, setValidated] = useState(false)
+  const history = useNavigate();
 
   const handleSubmit = (event) => {
 
@@ -38,15 +41,17 @@ const FormMaker = ({city, attributes }) => {
         req_body[elt.field] = elt.value
       }
 
-      axios.post('http://localhost:5000/predict', req_body, {headers: {"Access-Control-Allow-Origin": "*"}})
-      .then(function (response) {
-        let pred = response.data.prediction
-        alert(pred)
-        console.log(pred)
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+      history("/results");
+      // axios.post('http://localhost:1234/predict', req_body)
+      // .then(function (response) {
+      //   let pred = response.data.prediction
+      //   alert(pred)
+      //   console.log(pred)
+      //   response.send(pred)
+      // })
+      // .catch(function (error) {
+      //   console.log(error);
+      // });
     }
 
     setValidated(true);
@@ -69,7 +74,7 @@ const FormMaker = ({city, attributes }) => {
       <Form.Group as={Row} className="justify-content-md-center mb-3">
         <Form.Label column sm={2}> {formValue} </Form.Label>
         <Col sm={7}>
-        <FormInputNumber name={field} />
+          {formType(type, field)}
         </Col>
       </Form.Group>
     ))
