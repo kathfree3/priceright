@@ -8,12 +8,12 @@ import logo from "./logo.png"
 const NavBar = () => {
   
   return (
-    <Navbar bg="light" className="navybar" style={{ padding: '1rem' }}>
+    <Navbar bg="light" className="navybar" style={{ padding: '0.5rem' }}>
       <Navbar.Brand>
       <img
           alt=""
           src={logo}
-          height="65"
+          height="25"
           width="auto"
       />
       </Navbar.Brand>

@@ -14,6 +14,8 @@ const FormMaker = ({city, attributes }) => {
   const [validated, setValidated] = useState(false)
 
   const handleSubmit = (event) => {
+
+    //handle validation stuff
     const form = event.currentTarget;
     const v = form.checkValidity()
     console.log(v)
@@ -33,6 +35,7 @@ const FormMaker = ({city, attributes }) => {
     }
 
     setValidated(true);
+   
   };
 
 
@@ -57,11 +60,15 @@ const FormMaker = ({city, attributes }) => {
     ))
   )
 
+
   return (
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
         {makeInputs()}
-        <h3> <Button type="submit" > Get Predictions </Button> </h3>
+        <form action="/results">
+          <h3> <Button type="submit"> Get Predictions </Button> </h3> 
+        </form>
       </Form>
   )
 }
 export default FormMaker
+
