@@ -1,13 +1,13 @@
 import React from 'react'
  
+import { Title, PageWrapper } from '../style/globalComponents'
+
 const AboutPage = () => (
-  <div className="homePage">     
-    <div className="homepagetitle"> 
-      <h1> About us </h1>
-    </div>
+  <PageWrapper>     
+    <Title> About Us</Title>
     <div className='houseInfoForm'>
       <p> We are price right!</p>
     </div>
-  </div>
+  </PageWrapper>
 )
 export default AboutPage

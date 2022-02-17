@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
-const axios = require('axios').default;
+import axios from 'axios'
 import { Redirect } from 'react-router'
 import { useNavigate } from 'react-router-dom'
 
