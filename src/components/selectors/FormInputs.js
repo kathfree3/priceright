@@ -1,11 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import validator from 'validator'
 
 import Form from 'react-bootstrap/Form'
-import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
-
-
 
 export const FormBoolean = ({ name }) => (
   <>
@@ -29,6 +25,23 @@ export const FormBoolean = ({ name }) => (
   </>
 )
 
+// homeType : 0, 1, 2, 4, 5
+
+const values = [0, 1, 2, 3, 4, 5]
+
+export const FormHomeType = ({ name }) => (
+  <>
+    {values.map(v => <Form.Check
+      required
+      inline
+      label={v}
+      name={name}
+      type='radio'
+      key='Yes'
+      value='true'
+    />)}
+  </>
+)
 
 
 export const FormInputNumber = ({ name }) => {

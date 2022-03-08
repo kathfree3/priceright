@@ -9,8 +9,8 @@ import { useNavigate } from 'react-router-dom'
 
 import { cityOptions, TYPES } from '../constants'
 
-import { FormBoolean, FormInput, FormInputNumber } from './selectors/Other'
-const { BOOLEAN, INPUT, NUMBER } = TYPES
+import { FormBoolean, FormInput, FormInputNumber, FormHomeType } from './selectors/FormInputs'
+const { BOOLEAN, INPUT, NUMBER, HOME_TYPE } = TYPES
 
 
 const FormMaker = ({city, attributes }) => {
@@ -66,6 +66,8 @@ const FormMaker = ({city, attributes }) => {
       return <FormInput name={field} />
     } else if (type === NUMBER) {
       return <FormInputNumber name={field} />
+    } else if (type === HOME_TYPE) {
+      return <FormHomeType name={field} />
     }
   }
 

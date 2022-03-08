@@ -4,19 +4,24 @@ const int64 = 'boolean'
 const BOOLEAN = 'boolean'
 const INPUT = 'input'
 const NUMBER = 'number'
+const HOME_TYPE = 'home_type'
 
 export const TYPES = {
   BOOLEAN,
   INPUT,
   NUMBER,
+  HOME_TYPE
 }
 
 const otherCityFields = [
-  { field: 'area', formValue: 'Area', type: INPUT},
+  { field: 'area', formValue: 'Area', type: INPUT },
+  { field: 'latitude', formValue: "Latitude", type: INPUT },
+  { field: 'longitude', formValue: "Longitude", type: INPUT },
+  { field: 'zipcode', formValue: "Zipcode", type: NUMBER },
   { field: 'bathrooms', formValue: 'Number of Bathrooms', type: NUMBER },
   { field: 'bedrooms', formValue: 'Number of Bedrooms', type: NUMBER},
   { field: 'livingArea', formValue: 'Living Area', type: INPUT},
-  { field: 'homeType', formValue: 'Home Type', type: NUMBER },
+  { field: 'homeType', formValue: 'Home Type', type: HOME_TYPE },
   { field: 'isPreforeclosureAuction', formValue: 'Is Pre-foreclosure Auction', type: BOOLEAN },
   { field: 'isNonOwnerOccupied', formValue: 'Is Non-owner Occupied', type: BOOLEAN },
   { field: 'isPremierBuilder', formValue: 'Premier Builder', type: BOOLEAN },
@@ -27,13 +32,9 @@ const otherCityFields = [
   { field: 'expansionDistance', formValue: 'Expansion Distance', type: INPUT },
   { field: 'needsUpdate', formValue: 'Needs Update', type: BOOLEAN },
   { field: 'hasHousingConnectorPermission', formValue: 'Has Housing Connector Permission', type: BOOLEAN },
-  { field: 'north', formValue: 'North', type: INPUT },
-  { field: 'east', formValue: 'East', type: INPUT },
-  { field: 'south', formValue: 'South', type: INPUT },
-  { field: 'west', formValue: 'West', type: INPUT },
 ]
 
-
+  // homeType : 0, 1, 2, 4, 5
 const miamiFields = [
   {field: 'PARCELNO', formValue: 'PARCELNO', type: ''},
   {field: 'LND_SQFOOT', formValue: 'LND_SQFOOT', type: ''},
@@ -58,7 +59,6 @@ const miamiFields = [
   {field: 'LAND SQUARE FEET', formValue: 'LAND SQUARE FEET', type: ''},
   {field: 'GROSS SQUARE FEET', formValue: 'GROSS SQUARE FEET', type: ''},
   {field: 'YEAR BUILT', formValue: 'YEAR BUILT', type: ''},
-  {field: 'TAX CLASS AT TIME OF SALE', formValue: 'TAX CLASS AT TIME OF SALE', type: ''},
   {field: 'SALE PRICE', formValue: 'SALE PRICE', type: ''},
   {field: 'loc', formValue: 'loc', type: ''},
 ]
