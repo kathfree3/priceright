@@ -2,6 +2,9 @@ import React from 'react'
 import validator from 'validator'
 
 import Form from 'react-bootstrap/Form'
+import Dropdown from 'react-bootstrap/Dropdown'
+
+import { home_types } from '../../constants'
 
 export const FormBoolean = ({ name }) => (
   <>
@@ -28,20 +31,16 @@ export const FormBoolean = ({ name }) => (
 // homeType : 0, 1, 2, 4, 5
 
 const values = [0, 1, 2, 3, 4, 5]
-
+console.log(home_types)
 export const FormHomeType = ({ name }) => (
-  <>
-    {values.map(v => <Form.Check
-      required
-      inline
-      label={v}
-      name={name}
-      type='radio'
-      key='Yes'
-      value='true'
-    />)}
-  </>
+  <Form.Select aria-label="Default select example">
+    <option value='none'>Please select a home type</option>
+      {home_types.map((v, i) => 
+        <option value={i}>{v}</option>
+      )}
+  </Form.Select>
 )
+
 
 
 export const FormInputNumber = ({ name }) => {

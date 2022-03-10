@@ -112,3 +112,23 @@ export const cityOptions = [
   {city: 'nyc', formValue: 'New York', attributes: nycFields}, 
   {city: 'austin', formValue: 'Austin', attributes: austinFields}, 
 ]
+
+
+const city_vals = {
+  0 : "la",
+  1 : "houstin",
+  2 : "chicago",
+  3 : "philly",
+  4 : "phoenix",
+  5 : "sandiego"
+}
+
+export const home_types = [
+  'Single Family',
+  'Multi Family',
+  'Townhouse',
+  'Apartment',
+  'Condo',
+  'Manufactured',
+  'Lot'
+]
