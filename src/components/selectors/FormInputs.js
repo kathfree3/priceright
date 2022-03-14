@@ -2,9 +2,8 @@ import React from 'react'
 import validator from 'validator'
 
 import Form from 'react-bootstrap/Form'
-import Dropdown from 'react-bootstrap/Dropdown'
 
-import { home_types } from '../../constants'
+import { cityOptions, home_types } from '../../constants'
 
 export const FormBoolean = ({ name }) => (
   <>
@@ -15,7 +14,7 @@ export const FormBoolean = ({ name }) => (
       name={name}
       type='radio'
       key='Yes'
-      value='true'
+      value='1'
     />
     <Form.Check
       inline
@@ -23,24 +22,10 @@ export const FormBoolean = ({ name }) => (
       name={name}
       type='radio'
       key='No'
-      value='false'
+      value='0'
     />
   </>
 )
-
-// homeType : 0, 1, 2, 4, 5
-
-const values = [0, 1, 2, 3, 4, 5]
-console.log(home_types)
-export const FormHomeType = ({ name }) => (
-  <Form.Select aria-label="Default select example">
-    <option value='none'>Please select a home type</option>
-      {home_types.map((v, i) => 
-        <option value={i}>{v}</option>
-      )}
-  </Form.Select>
-)
-
 
 
 export const FormInputNumber = ({ name }) => {
@@ -60,6 +45,24 @@ export const FormInputNumber = ({ name }) => {
   )
 }
 
+export const FormHomeTypeSelector = ({ name }) => (
+  <Form.Select aria-label="Default select example" name={name}>
+    <option value='none'>Please select a home type</option>
+    {home_types.map(({formValue, value}) => 
+      <option value={value} key={value}>{formValue}</option>
+    )}
+  </Form.Select>
+)
+
+export const FormCitySelector = ({ name }) => (
+  <Form.Select aria-label="Default select example" name={name}>
+  <option value='none'>Please select a city</option>
+  {cityOptions.map(({formValue, value}) => 
+    <option value={value} key={value}>{formValue}</option>
+  )}
+</Form.Select>
+)
+
 export const FormInput = ({ name }) => (
-  <Form.Control required type='text'name={name} />
+  <Form.Control required type='text' name={name} />
 )

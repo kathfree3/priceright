@@ -7,13 +7,15 @@ import axios from 'axios'
 import { Redirect } from 'react-router'
 import { useNavigate } from 'react-router-dom'
 
-import { cityOptions, TYPES } from '../constants'
+import {
+  TYPES, homeAttributes,
+} from '../constants'
 
-import { FormBoolean, FormInput, FormInputNumber, FormHomeType } from './selectors/FormInputs'
-const { BOOLEAN, INPUT, NUMBER, HOME_TYPE } = TYPES
+import { FormBoolean, FormInput, FormInputNumber, FormCitySelector, FormHomeTypeSelector } from './selectors/FormInputs'
+const { BOOLEAN, INPUT, NUMBER, HOME_TYPE, CITY } = TYPES
 
 
-const FormMaker = ({city, attributes }) => {
+const FormMaker = () => {
   const [validated, setValidated] = useState(false)
   const history = useNavigate();
 
@@ -30,18 +32,27 @@ const FormMaker = ({city, attributes }) => {
 
     if (v) {
       event.preventDefault();
-      const sendData = []
-      attributes.forEach(({field}) => {
-        const value = event.target.elements[field].value
-        sendData.push({field, value})
+      console.log(event.target)
+      console.log(event.target.elements)
+      homeAttributes.forEach(({field}) => {
+        if (event.target.elements[field]) {
+          console.log(field, event.target.elements[field].value)
+        } else {
+          console.log(field)
+        }
       })
-      let req_body = {}
-      for (let i = 0; i < sendData.length; i++) {
-        let elt = sendData[i]
-        req_body[elt.field] = elt.value
-      }
+      // const sendData = []
+      // homeAttributes.forEach(({field}) => {
+      //   const value = event.target.elements[field].value
+      //   sendData.push({field, value})
+      // })
+      // let req_body = {}
+      // for (let i = 0; i < sendData.length; i++) {
+      //   let elt = sendData[i]
+      //   req_body[elt.field] = elt.value
+      // }
 
-      history("/results");
+      // history("/results");
       // axios.post('http://localhost:1234/predict', req_body)
       // .then(function (response) {
       //   let pred = response.data.prediction
@@ -67,15 +78,19 @@ const FormMaker = ({city, attributes }) => {
     } else if (type === NUMBER) {
       return <FormInputNumber name={field} />
     } else if (type === HOME_TYPE) {
-      return <FormHomeType name={field} />
+      return <FormHomeTypeSelector name={field}/>
+    } else if (type === CITY) {
+      return <FormCitySelector name={field}/>
     }
   }
 
   const makeInputs = () => (
-    attributes.map(({field, formValue, type}) => (
-      <Form.Group as={Row} className="justify-content-md-center mb-3">
-        <Form.Label column sm={2}> {formValue} </Form.Label>
-        <Col sm={7}>
+    homeAttributes.map(({field, formValue, type}) => (
+      <Form.Group key={field} as={Row} className="justify-content-md-center mb-3">
+        <Col sm={6}>
+          <Form.Label column sm={2}> {formValue} </Form.Label>
+          </Col>
+        <Col>
           {formType(type, field)}
         </Col>
       </Form.Group>
