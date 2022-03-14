@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
+import Container from 'react-bootstrap/Container'
 import axios from 'axios'
 import { Redirect } from 'react-router'
 import { useNavigate } from 'react-router-dom'
@@ -20,7 +21,6 @@ const FormMaker = () => {
   const history = useNavigate();
 
   const handleSubmit = (event) => {
-
     //handle validation stuff
     const form = event.currentTarget;
     const v = form.checkValidity()
@@ -32,20 +32,13 @@ const FormMaker = () => {
 
     if (v) {
       event.preventDefault();
-      console.log(event.target)
-      console.log(event.target.elements)
+      const sendData = []
       homeAttributes.forEach(({field}) => {
-        if (event.target.elements[field]) {
-          console.log(field, event.target.elements[field].value)
-        } else {
-          console.log(field)
-        }
+        const value = event.target.elements[field].value
+        sendData.push([field, value])
       })
-      // const sendData = []
-      // homeAttributes.forEach(({field}) => {
-      //   const value = event.target.elements[field].value
-      //   sendData.push({field, value})
-      // })
+
+      console.log(sendData)
       // let req_body = {}
       // for (let i = 0; i < sendData.length; i++) {
       //   let elt = sendData[i]
@@ -87,9 +80,7 @@ const FormMaker = () => {
   const makeInputs = () => (
     homeAttributes.map(({field, formValue, type}) => (
       <Form.Group key={field} as={Row} className="justify-content-md-center mb-3">
-        <Col sm={6}>
-          <Form.Label column sm={2}> {formValue} </Form.Label>
-          </Col>
+        <Form.Label column> {formValue} </Form.Label>
         <Col>
           {formType(type, field)}
         </Col>
@@ -99,10 +90,12 @@ const FormMaker = () => {
 
 
   return (
+    <Container fluid>
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
         {makeInputs()}
         <Button type="submit"> Get Predictions </Button>
       </Form>
+      </Container>
   )
 }
 export default FormMaker

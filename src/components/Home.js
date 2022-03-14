@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import s from 'styled-components'
+import React from 'react'
 
 // local imports
 import FormMaker from './AttributeForm'
